@@ -14,7 +14,8 @@ namespace EasyPay
     [ServiceContract]
     public interface IService1
     {
-        //PROBANDO 123123
+
+        //PROBANDO
         [OperationContract]
         string GetData(int value);
 
