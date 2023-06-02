@@ -16,7 +16,7 @@ namespace EasyPay
         SqlConnection cn;
         SqlCommand cmd;
         SqlDataAdapter ada;
-        public void conexionSentinel()
+        public void conexion()
         {
             cn = new SqlConnection("Data Source=DESKTOP-1SF9NUP;Initial Catalog=BDSENTINEL;Integrated Security=True");
             cn.Open();
