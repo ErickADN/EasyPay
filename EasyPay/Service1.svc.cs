@@ -18,10 +18,20 @@ namespace EasyPay
         SqlDataAdapter ada;
         public void conexion()
         {
-            cn = new SqlConnection("Data Source=DESKTOP-1SF9NUP;Initial Catalog=BDSENTINEL;Integrated Security=True");
+            //SqlConnection("DataSource=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
+            //Data Source=DESKTOP-PRPBOIM; Initial Catalog = BDEasyPay; User ID =sa; Password=12345678 Henry
+            //Data Source=DESKTOP-DCDV5K7; Initial Catalog = BDEasPay; User ID =sa; Password=12345678 Alvaro
+            //("Data Source=DESKTOP-1SF9NUP;Initial Catalog=BDEasyPay;Integrated Security=True")Nazer
+            cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
+                    "initial catalog=BDEasyPay;" +
+                    "User ID= usuario1;Password= 1234");//Erick
             cn.Open();
         }
+        public void desconexion()
+        {
 
+            cn.Close();
+        }
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
