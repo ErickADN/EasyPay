@@ -21,7 +21,7 @@ namespace EasyPay
             //SqlConnection("DataSource=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
             //Data Source=DESKTOP-PRPBOIM; Initial Catalog = BDEasyPay; User ID =sa; Password=12345678 Henry
             //Data Source=DESKTOP-DCDV5K7; Initial Catalog = BDEasPay; User ID =sa; Password=12345678 Alvaro
-            //("Data Source=DESKTOP-1SF9NUP;Initial Catalog=BDEasyPay;Integrated Security=True")Nazer
+            //("Data Source=DESKTOP-SS5KA63;Initial Catalog=BDEasyPay;Integrated Security=True")Nazer
             cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
                     "initial catalog=BDEasyPay;" +
                     "User ID= usuario1;Password= 1234");//Erick
