@@ -16,6 +16,7 @@ namespace EasyPay
         SqlConnection cn;
         SqlCommand cmd;
         SqlDataAdapter ada;
+        SqlDataReader dr;
         public void conexion()
         {
             //SqlConnection("DataSource=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
@@ -24,6 +25,13 @@ namespace EasyPay
             //("Data Source=DESKTOP-SS5KA63;Initial Catalog=BDEasyPay;Integrated Security=True")Nazer
             cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
                     "initial catalog=BDEasyPay;" +
+                    "User ID= usuario1;Password= 1234");//Erick
+            cn.Open();
+        }
+        public void conexionReniec()
+        {
+            cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
+                    "initial catalog=RENIEC;" +
                     "User ID= usuario1;Password= 1234");//Erick
             cn.Open();
         }
@@ -48,6 +56,65 @@ namespace EasyPay
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public bool guardarUsuarioReniec(string dni, string nombre, string apellido, int edad, string contraseña, string celular, string direccion,string fechaNacimiento)
+        {
+            conexionReniec();
+            SqlDataReader dr;
+            string sql = "select * from Usuario where Dni=@Dni and Nombre=@Nombre and Apellido=@Apellido and Direccion =@Direccion and FechaNacimiento=@FechaNacimiento";
+            cmd = new SqlCommand(sql, cn);
+            reniec objReniec = new reniec();
+            objReniec.Dni = dni;
+            objReniec.Nombre = nombre;
+            objReniec.Apellido = apellido;
+            objReniec.Direccion = direccion;
+            objReniec.FechaNacimiento = fechaNacimiento;
+
+            cmd.Parameters.Add("@Dni", System.Data.SqlDbType.VarChar).Value = objReniec.Dni;
+            cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.VarChar).Value = objReniec.Nombre;
+            cmd.Parameters.Add("@Apellido", System.Data.SqlDbType.VarChar).Value = objReniec.Apellido;
+            cmd.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = objReniec.Direccion;
+            cmd.Parameters.Add("@FechaNacimiento", System.Data.SqlDbType.Date).Value = objReniec.FechaNacimiento;
+            
+            dr = cmd.ExecuteReader();
+            bool insertado=false;
+            if (dr.Read())
+            {
+                conexion();
+                string sql2 = "insert into Usuario values(@Dni,@Nombre,@Apellido,@Edad,@Contraseña,@Celular,@Direccion)";
+                cmd = new SqlCommand(sql2, cn);
+                reniec objReniec2 = new reniec();
+                objReniec2.Dni = dni;
+                objReniec2.Nombre = nombre;
+                objReniec2.Apellido = apellido;
+                objReniec2.Edad = edad;
+                objReniec2.Contraseña = contraseña;
+                objReniec2.Celular = celular;
+                objReniec2.Direccion = direccion;
+
+                cmd.Parameters.Add("@Dni", System.Data.SqlDbType.VarChar).Value = objReniec2.Dni;
+                cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.VarChar).Value = objReniec2.Nombre;
+                cmd.Parameters.Add("@Apellido", System.Data.SqlDbType.VarChar).Value = objReniec2.Apellido;
+                cmd.Parameters.Add("@Edad", System.Data.SqlDbType.Int).Value = objReniec2.Edad;
+                cmd.Parameters.Add("@Contraseña", System.Data.SqlDbType.VarChar).Value = objReniec2.Contraseña;
+                cmd.Parameters.Add("@Celular", System.Data.SqlDbType.VarChar).Value = objReniec2.Celular;
+                cmd.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = objReniec2.Direccion;
+
+                int registrado = cmd.ExecuteNonQuery();
+                
+                if (registrado > 0)
+                {
+                    insertado = true;
+                }
+                else
+                {
+                    insertado = false;
+                }
+                return insertado;
+            }
+            return insertado;
+            
         }
     }
 }
