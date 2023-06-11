@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPay", "EasyPay\EasyPay.csproj", "{D5E752B0-83CD-41E8-9875-34DD07FF3C5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPayCliente", "EasyPayCliente\EasyPayCliente.csproj", "{A03EC5B6-ECCD-4A8B-9F3E-458B2BBE9A28}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D5E752B0-83CD-41E8-9875-34DD07FF3C5C} = {D5E752B0-83CD-41E8-9875-34DD07FF3C5C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

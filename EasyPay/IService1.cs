@@ -19,6 +19,8 @@ namespace EasyPay
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
+        [OperationContract]
+        bool login(string dni, string pass);
 
         // TODO: agregue aquí sus operaciones de servicio
     }
