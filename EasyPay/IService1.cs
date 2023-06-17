@@ -23,6 +23,8 @@ namespace EasyPay
         [OperationContract]
         bool guardarUsuarioReniec(String dni, String nombre, String apellido, int edad, String contraseña, String celular, String direccion,String fechaNacimiento);
 
+        [OperationContract]
+        bool guardarEmpresaSunat(string ruc, string nombrelegal, string direccioncorreoelectronico, string direccion, string contraseña);
 
         // TODO: agregue aquí sus operaciones de servicio
     }
