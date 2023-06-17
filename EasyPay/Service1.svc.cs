@@ -19,13 +19,13 @@ namespace EasyPay
         SqlDataReader dr;
         public void conexion()
         {
-            //SqlConnection("DataSource=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
+            cn = new SqlConnection("Data Source=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
             //Data Source=DESKTOP-PRPBOIM; Initial Catalog = BDEasyPay; User ID =sa; Password=12345678 Henry
             //Data Source=DESKTOP-DCDV5K7; Initial Catalog = BDEasPay; User ID =sa; Password=12345678 Alvaro
             //("Data Source=DESKTOP-SS5KA63;Initial Catalog=BDEasyPay;Integrated Security=True")Nazer
-            cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
-                    "initial catalog=BDEasyPay;" +
-                    "User ID= usuario1;Password= 1234");//Erick
+            //cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
+            //        "initial catalog=BDEasyPay;" +
+            //        "User ID= usuario1;Password= 1234");//Erick
             cn.Open();
         }
         public void conexionReniec()
@@ -33,6 +33,13 @@ namespace EasyPay
             cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
                     "initial catalog=RENIEC;" +
                     "User ID= usuario1;Password= 1234");//Erick
+            cn.Open();
+        }
+        public void conexionSunat()
+        {
+            cn = new SqlConnection("data source=MIGUEL-PC;" +
+                    "initial catalog=SUNAT;" +
+                    "User ID= sa;Password= 123");//Miguel
             cn.Open();
         }
         public void desconexion()
@@ -115,6 +122,62 @@ namespace EasyPay
             }
             return insertado;
             
+        }
+        public bool guardarEmpresaSunat(string ruc, string nombrelegal, string direccioncorreoelectronico, string direccion, string contraseña)
+        {
+            conexionSunat();
+            SqlDataReader dr;
+            string sql = "select * from EMPRESA where ruc=@ruc and Nombrelegal=@Nombrelegal and direccioncorreoelectronico=@direccioncorreoelectronico and Direccion =@Direccion";
+            cmd = new SqlCommand(sql, cn);
+            sunat objSunat = new sunat();
+            objSunat.Ruc = ruc;
+            objSunat.Nombrelegal = nombrelegal;
+            objSunat.Direccioncorreoelectronico = direccioncorreoelectronico;
+            objSunat.Direccion = direccion;
+           
+
+            cmd.Parameters.Add("@ruc", System.Data.SqlDbType.VarChar).Value = objSunat.Ruc;
+            cmd.Parameters.Add("@Nombrelegal", System.Data.SqlDbType.VarChar).Value = objSunat.Nombrelegal;
+            cmd.Parameters.Add("@direccioncorreoelectronico", System.Data.SqlDbType.VarChar).Value = objSunat.Direccioncorreoelectronico;
+            cmd.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = objSunat.Direccion;
+
+
+            dr = cmd.ExecuteReader();
+            bool insertado = false;
+            if (dr.Read())
+            {
+                conexion();
+                string sql2 = "insert into EMPRESA values(@Ruc,@Nombrelegal,@Direccioncorreoelectronico,@Direccion,@Contraseña)";
+                cmd = new SqlCommand(sql2, cn);
+                sunat objSunat2 = new sunat();
+                objSunat2.Ruc = ruc;
+                objSunat2.Nombrelegal = nombrelegal;
+                objSunat2.Direccioncorreoelectronico = direccioncorreoelectronico;
+                objSunat2.Direccion = direccion;
+                objSunat2.Contraseña = contraseña;
+
+
+                cmd.Parameters.Add("@Ruc", System.Data.SqlDbType.VarChar).Value = objSunat2.Ruc;
+                cmd.Parameters.Add("@Nombrelegal", System.Data.SqlDbType.VarChar).Value = objSunat2.Nombrelegal;
+                cmd.Parameters.Add("@Direccioncorreoelectronico", System.Data.SqlDbType.VarChar).Value = objSunat2.Direccioncorreoelectronico;
+                cmd.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = objSunat2.Direccion;
+                cmd.Parameters.Add("@Contraseña", System.Data.SqlDbType.VarChar).Value = objSunat2.Contraseña;
+
+
+                int registrado = cmd.ExecuteNonQuery();
+
+                if (registrado > 0)
+                {
+                    insertado = true;
+                }
+                else
+                {
+                    insertado = false;
+                }
+                return insertado;
+            }
+            return insertado;
+
         }
     }
 }
