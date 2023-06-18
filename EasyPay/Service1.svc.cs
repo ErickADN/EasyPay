@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -19,13 +20,13 @@ namespace EasyPay
         SqlDataReader dr;
         public void conexion()
         {
-            cn = new SqlConnection("Data Source=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
+            //cn = new SqlConnection("Data Source=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
             //Data Source=DESKTOP-PRPBOIM; Initial Catalog = BDEasyPay; User ID =sa; Password=12345678 Henry
             //Data Source=DESKTOP-DCDV5K7; Initial Catalog = BDEasPay; User ID =sa; Password=12345678 Alvaro
             //("Data Source=DESKTOP-SS5KA63;Initial Catalog=BDEasyPay;Integrated Security=True")Nazer
-            //cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
-            //        "initial catalog=BDEasyPay;" +
-            //        "User ID= usuario1;Password= 1234");//Erick
+            cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
+                    "initial catalog=BDEasyPay;" +
+                    "User ID= usuario1;Password= 1234");//Erick
             cn.Open();
         }
         public void conexionReniec()
@@ -37,9 +38,9 @@ namespace EasyPay
         }
         public void conexionSunat()
         {
-            cn = new SqlConnection("data source=MIGUEL-PC;" +
+            cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
                     "initial catalog=SUNAT;" +
-                    "User ID= sa;Password= 123");//Miguel
+                    "User ID= usuario1;Password= 1234");//Erick
             cn.Open();
         }
         public void desconexion()
@@ -65,10 +66,10 @@ namespace EasyPay
             return composite;
         }
 
-        public bool guardarUsuarioReniec(string dni, string nombre, string apellido, int edad, string contraseña, string celular, string direccion,string fechaNacimiento)
+        public bool guardarUsuarioReniec(string dni, string nombre, string apellido, string contraseña, string celular, string direccion,string fechaNacimiento)
         {
             conexionReniec();
-            SqlDataReader dr;
+            
             string sql = "select * from Usuario where Dni=@Dni and Nombre=@Nombre and Apellido=@Apellido and Direccion =@Direccion and FechaNacimiento=@FechaNacimiento";
             cmd = new SqlCommand(sql, cn);
             reniec objReniec = new reniec();
@@ -89,13 +90,12 @@ namespace EasyPay
             if (dr.Read())
             {
                 conexion();
-                string sql2 = "insert into Usuario values(@Dni,@Nombre,@Apellido,@Edad,@Contraseña,@Celular,@Direccion)";
+                string sql2 = "insert into Usuario values(@Dni,@Nombre,@Apellido,@Contraseña,@Celular,@Direccion)";
                 cmd = new SqlCommand(sql2, cn);
                 reniec objReniec2 = new reniec();
                 objReniec2.Dni = dni;
                 objReniec2.Nombre = nombre;
                 objReniec2.Apellido = apellido;
-                objReniec2.Edad = edad;
                 objReniec2.Contraseña = contraseña;
                 objReniec2.Celular = celular;
                 objReniec2.Direccion = direccion;
@@ -103,7 +103,6 @@ namespace EasyPay
                 cmd.Parameters.Add("@Dni", System.Data.SqlDbType.VarChar).Value = objReniec2.Dni;
                 cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.VarChar).Value = objReniec2.Nombre;
                 cmd.Parameters.Add("@Apellido", System.Data.SqlDbType.VarChar).Value = objReniec2.Apellido;
-                cmd.Parameters.Add("@Edad", System.Data.SqlDbType.Int).Value = objReniec2.Edad;
                 cmd.Parameters.Add("@Contraseña", System.Data.SqlDbType.VarChar).Value = objReniec2.Contraseña;
                 cmd.Parameters.Add("@Celular", System.Data.SqlDbType.VarChar).Value = objReniec2.Celular;
                 cmd.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = objReniec2.Direccion;
@@ -126,7 +125,6 @@ namespace EasyPay
         public bool guardarEmpresaSunat(string ruc, string nombrelegal, string direccioncorreoelectronico, string direccion, string contraseña)
         {
             conexionSunat();
-            SqlDataReader dr;
             string sql = "select * from EMPRESA where ruc=@ruc and Nombrelegal=@Nombrelegal and direccioncorreoelectronico=@direccioncorreoelectronico and Direccion =@Direccion";
             cmd = new SqlCommand(sql, cn);
             sunat objSunat = new sunat();
@@ -179,5 +177,35 @@ namespace EasyPay
             return insertado;
 
         }
+
+        public bool login(string dni, string pass)
+        {
+            //gfg
+            conexion();
+            DataTable tablita = new DataTable();
+            string sentencia = "select * from Usuario where Dni=@Dni and Contraseña=@Contraseña";
+            cmd = new SqlCommand(sentencia, cn);
+            Usuario objUsuario = new Usuario();
+            objUsuario.Dni = dni;
+            objUsuario.Contraseña = pass;
+            cmd.Parameters.Add("@Dni", System.Data.SqlDbType.VarChar).Value = objUsuario.Dni;
+            cmd.Parameters.Add("@Contraseña", System.Data.SqlDbType.VarChar).Value = objUsuario.Contraseña;
+            ada = new SqlDataAdapter(cmd);
+            ada.Fill(tablita);
+            bool ingresa = false;
+            if (tablita.Rows.Count > 0)
+            {
+                ingresa = true;
+               
+            }
+            else
+            {
+                ingresa = false;
+               
+            }
+            return ingresa;
+        }
     }
 }
+    
+

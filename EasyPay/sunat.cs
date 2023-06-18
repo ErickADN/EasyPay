@@ -15,7 +15,7 @@ namespace EasyPay
         private String direccioncorreoelectronico;
         private String direccion;
         private String contraseña;
-        [DataMember]
+    
 
         public String Ruc { get => ruc; set => ruc = value; }
         public String Nombrelegal { get => nombrelegal; set => nombrelegal = value; }

@@ -21,10 +21,13 @@ namespace EasyPay
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        bool guardarUsuarioReniec(String dni, String nombre, String apellido, int edad, String contraseña, String celular, String direccion,String fechaNacimiento);
+        bool guardarUsuarioReniec(String dni, String nombre, String apellido, String contraseña, String celular, String direccion,String fechaNacimiento);
 
         [OperationContract]
         bool guardarEmpresaSunat(string ruc, string nombrelegal, string direccioncorreoelectronico, string direccion, string contraseña);
+
+        [OperationContract]
+        bool login(string dni, string pass);
 
         // TODO: agregue aquí sus operaciones de servicio
     }
