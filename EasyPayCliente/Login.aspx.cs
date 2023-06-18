@@ -35,5 +35,6 @@ namespace EasyPayCliente
                 ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script);
             }
         }
+
     }
 }

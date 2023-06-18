@@ -23,10 +23,10 @@ namespace EasyPay
             //cn = new SqlConnection("Data Source=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
             //Data Source=DESKTOP-PRPBOIM; Initial Catalog = BDEasyPay; User ID =sa; Password=12345678 Henry
             //Data Source=DESKTOP-DCDV5K7; Initial Catalog = BDEasPay; User ID =sa; Password=12345678 Alvaro
-            //("Data Source=DESKTOP-SS5KA63;Initial Catalog=BDEasyPay;Integrated Security=True")Nazer
-            cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
+            cn= new SqlConnection("Data Source=DESKTOP-SS5KA63;Initial Catalog=BDEasyPay;Integrated Security=True");
+            /*cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
                     "initial catalog=BDEasyPay;" +
-                    "User ID= usuario1;Password= 1234");//Erick
+                    "User ID= usuario1;Password= 1234");//Erick */
             cn.Open();
         }
         public void conexionReniec()
@@ -204,6 +204,40 @@ namespace EasyPay
                
             }
             return ingresa;
+        }
+
+        public bool eliminarTarjetaEasyPay(string nrotarjeta, string dniusuario, string contra)
+        {
+            conexion();
+            string consulta1 = "SELECT * FROM Usuario where Contraseña=@Contraseña";
+            cmd = new SqlCommand(consulta1,cn);
+            Usuario objUsuario = new Usuario();
+            objUsuario.Contraseña = contra;
+            cmd.Parameters.Add("@Contraseña ", System.Data.SqlDbType.VarChar).Value = objUsuario.Contraseña;
+            dr = cmd.ExecuteReader();
+            bool consultado = false;
+            if(dr.Read())
+            {
+                conexion();
+                string consulta2= "DELETE FROM tarjeta where NroTarjeta=@NroTarjeta AND dniUsuario=@dniUsuario";
+                cmd = new SqlCommand(consulta2, cn);
+                TarjetaEasyPay objTarjetaEasyPay = new TarjetaEasyPay();
+                objTarjetaEasyPay.Nrotarjeta = nrotarjeta;
+                objTarjetaEasyPay.Dniusuario = dniusuario;
+                cmd.Parameters.Add("@dniUsuario", System.Data.SqlDbType.VarChar).Value = objTarjetaEasyPay.Dniusuario;
+                cmd.Parameters.Add("@NroTarjeta", System.Data.SqlDbType.VarChar).Value = objTarjetaEasyPay.Nrotarjeta;
+                int eliminado = cmd.ExecuteNonQuery();
+                if(eliminado > 0)
+                {
+                    consultado = true;
+                }
+                else
+                {
+                    consultado = false;
+                }
+                
+            }
+            return consultado;
         }
     }
 }
