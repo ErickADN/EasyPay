@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EasyPayCliente</RootNamespace>
     <AssemblyName>EasyPayCliente</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44394</IISExpressSSLPort>
@@ -45,7 +45,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -56,12 +55,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -79,7 +76,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Crear_Cuenta.aspx" />
+    <Content Include="EasyPay_Principal.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Properties\App_LocalResources\Images\cuenta_empresarial.jpg" />
+    <Content Include="Properties\App_LocalResources\Images\cuenta_personal.jpg" />
+    <Content Include="Properties\App_LocalResources\Images\easypay_logo.png" />
     <Content Include="RegistrarSUNAT.aspx" />
     <Content Include="Reg_User_Reniec.aspx" />
     <Content Include="Web.config" />
@@ -89,6 +91,20 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Crear_Cuenta.aspx.cs">
+      <DependentUpon>Crear_Cuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Crear_Cuenta.aspx.designer.cs">
+      <DependentUpon>Crear_Cuenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EasyPay_Principal.aspx.cs">
+      <DependentUpon>EasyPay_Principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EasyPay_Principal.aspx.designer.cs">
+      <DependentUpon>EasyPay_Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -138,6 +154,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServicioEasyPay\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

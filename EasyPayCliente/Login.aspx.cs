@@ -27,7 +27,7 @@ namespace EasyPayCliente
             if (existe == true)
             {
 
-                Response.Redirect("Reg_User_Reniec.aspx");
+                Response.Redirect("EasyPay_Principal.aspx");
             }
             else
             {
