@@ -17,7 +17,7 @@ namespace EasyPay
         private String direcciontarjeta;
         private String dniusuario;
 
-        public TarjetaEasyPay() { }
+        
 
         public string Nrotarjeta { get => nrotarjeta; set => nrotarjeta = value; }
         public string Tipotarjeta { get => tipotarjeta; set => tipotarjeta = value; }

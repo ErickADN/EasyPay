@@ -39,7 +39,7 @@
                     <asp:TextBox placeholder="Ingrese su Direccion" ID="txtdireccion" runat="server" Height="25px" Width="270px"></asp:TextBox>
                 </p>
             <p>
-                    <asp:TextBox placeholder="Ingrese su Fecha de Nacimiento DD/MM/YYYY" ID="txtfechanacimiento" runat="server" Height="25px" Width="270px"></asp:TextBox>
+                    <asp:TextBox placeholder="Ingrese su Fecha de Nacimiento YYYY/MM/DD" ID="txtfechanacimiento" runat="server" Height="25px" Width="270px"></asp:TextBox>
                 </p>
 
             <asp:Button ID="btnRegister" runat="server" Height="60px" Text="REGISTRARSE" Width="140px" BackColor="#3366CC" Font-Bold="True" Font-Names="Arial Black" ForeColor="White" OnClick="btnRegister_Click" />

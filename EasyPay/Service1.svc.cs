@@ -23,10 +23,10 @@ namespace EasyPay
             //cn = new SqlConnection("Data Source=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
             //Data Source=DESKTOP-PRPBOIM; Initial Catalog = BDEasyPay; User ID =sa; Password=12345678 Henry
             //Data Source=DESKTOP-DCDV5K7; Initial Catalog = BDEasPay; User ID =sa; Password=12345678 Alvaro
-            cn= new SqlConnection("Data Source=DESKTOP-SS5KA63;Initial Catalog=BDEasyPay;Integrated Security=True");
-            /*cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
+            //("Data Source=DESKTOP-SS5KA63;Initial Catalog=BDEasyPay;Integrated Security=True")Nazer
+            cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
                     "initial catalog=BDEasyPay;" +
-                    "User ID= usuario1;Password= 1234");//Erick */
+                    "User ID= usuario1;Password= 1234");//Erick
             cn.Open();
         }
         public void conexionReniec()
@@ -36,6 +36,7 @@ namespace EasyPay
                     "User ID= usuario1;Password= 1234");//Erick
             cn.Open();
         }
+        
         public void conexionSunat()
         {
             cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
@@ -43,6 +44,14 @@ namespace EasyPay
                     "User ID= usuario1;Password= 1234");//Erick
             cn.Open();
         }
+        public void conexionBanco()
+        {
+            cn = new SqlConnection("data source=DESKTOP-GVB16UV;" +
+                    "initial catalog=BANCO;" +
+                    "User ID= usuario1;Password= 1234");//Erick
+            cn.Open();
+        }
+        
         public void desconexion()
         {
 
@@ -206,20 +215,64 @@ namespace EasyPay
             return ingresa;
         }
 
+        public bool eliminarCuentaBancaria(string ruc, string contraseña,string NumeroCuenta)
+        {
+            conexion();
+            string sql = "select * from EMPRESA where RUC=@ruc and contraseña=@contraseña";
+            cmd = new SqlCommand(sql, cn);
+            cuentaBancaria objCuenta = new cuentaBancaria();
+            objCuenta.RUC1 = ruc;
+            objCuenta.Contraseña = contraseña;
+
+            cmd.Parameters.Add("@ruc", System.Data.SqlDbType.VarChar).Value = objCuenta.RUC1;
+            cmd.Parameters.Add("@contraseña", System.Data.SqlDbType.VarChar).Value = objCuenta.Contraseña;
+
+            dr = cmd.ExecuteReader();
+            bool eliminado=false;
+            if (dr.Read())
+            {
+                conexion();
+                string sql2 = "delete from cuentaBancaria where numeroDeCuenta=@Numerodecuenta and RUC=@ruc";
+                cmd = new SqlCommand(sql2, cn);
+                cuentaBancaria objCuenta2 = new cuentaBancaria();
+                objCuenta2.NroCuenta = NumeroCuenta;
+                objCuenta2.RUC1 =ruc;
+                
+
+                cmd.Parameters.Add("@Numerodecuenta", System.Data.SqlDbType.VarChar).Value = objCuenta2.NroCuenta;
+                cmd.Parameters.Add("@ruc", System.Data.SqlDbType.VarChar).Value = objCuenta2.RUC1;
+
+                int eliminar = cmd.ExecuteNonQuery();
+                
+                if (eliminar > 0)
+                {
+                    eliminado = true;
+                }
+                else
+                {
+                    eliminado = false;
+                }
+                return eliminado;
+            }
+            return eliminado;
+
+
+        }
+
         public bool eliminarTarjetaEasyPay(string nrotarjeta, string dniusuario, string contra)
         {
             conexion();
-            string consulta1 = "SELECT * FROM Usuario where Contraseña=@Contraseña";
-            cmd = new SqlCommand(consulta1,cn);
+            string consulta1 = "SELECT * FROM Usuario where  dniUsuario=@dniUsuario and  Contraseña=@Contraseña";
+            cmd = new SqlCommand(consulta1, cn);
             Usuario objUsuario = new Usuario();
             objUsuario.Contraseña = contra;
             cmd.Parameters.Add("@Contraseña ", System.Data.SqlDbType.VarChar).Value = objUsuario.Contraseña;
             dr = cmd.ExecuteReader();
             bool consultado = false;
-            if(dr.Read())
+            if (dr.Read())
             {
                 conexion();
-                string consulta2= "DELETE FROM tarjeta where NroTarjeta=@NroTarjeta AND dniUsuario=@dniUsuario";
+                string consulta2 = "DELETE FROM tarjeta where NroTarjeta=@NroTarjeta AND dniUsuario=@dniUsuario";
                 cmd = new SqlCommand(consulta2, cn);
                 TarjetaEasyPay objTarjetaEasyPay = new TarjetaEasyPay();
                 objTarjetaEasyPay.Nrotarjeta = nrotarjeta;
@@ -227,7 +280,7 @@ namespace EasyPay
                 cmd.Parameters.Add("@dniUsuario", System.Data.SqlDbType.VarChar).Value = objTarjetaEasyPay.Dniusuario;
                 cmd.Parameters.Add("@NroTarjeta", System.Data.SqlDbType.VarChar).Value = objTarjetaEasyPay.Nrotarjeta;
                 int eliminado = cmd.ExecuteNonQuery();
-                if(eliminado > 0)
+                if (eliminado > 0)
                 {
                     consultado = true;
                 }
@@ -235,9 +288,56 @@ namespace EasyPay
                 {
                     consultado = false;
                 }
-                
+
             }
             return consultado;
+        }
+
+        public bool insertarCuentaBancaria(string NumeroCuenta, string TipoCuenta, string RUC, string Direccion, int CodigoSwift, string Propietario)
+        {
+            conexionBanco();
+            string sql = "select * from CUENTABANCARIA where NumeroCuenta=@NumeroCuenta and Propietario=@Propietario";
+            cmd = new SqlCommand(sql, cn);
+            cuentaBancaria objBanco = new cuentaBancaria();
+            objBanco.NroCuenta = NumeroCuenta;
+            objBanco.Propietario = Propietario;
+
+            cmd.Parameters.Add("@NumeroCuenta", System.Data.SqlDbType.VarChar).Value = objBanco.NroCuenta;
+            cmd.Parameters.Add("@Propietario", System.Data.SqlDbType.VarChar).Value = objBanco.Propietario;
+
+            dr = cmd.ExecuteReader();
+            bool insertado = false;
+            if (dr.Read())
+            {
+                conexion();
+                string sql2 = "insert into cuentaBancaria values(@numeroDeCuenta,@codigoSwift,@TipoCuenta,@RUC,@Direccion)";
+                cmd = new SqlCommand(sql2, cn);
+                cuentaBancaria objBanco2 = new cuentaBancaria();
+                objBanco2.NroCuenta = NumeroCuenta;
+                objBanco2.CodigoSwift =CodigoSwift.ToString();
+                objBanco2.TipoCuenta1 = TipoCuenta;
+                objBanco2.RUC1 = RUC;
+                objBanco2.Direccion1 = Direccion;
+
+                cmd.Parameters.Add("@numeroDeCuenta", System.Data.SqlDbType.Int).Value = objBanco2.NroCuenta;
+                cmd.Parameters.Add("@codigoSwift", System.Data.SqlDbType.Int).Value = objBanco2.CodigoSwift;
+                cmd.Parameters.Add("@TipoCuenta", System.Data.SqlDbType.VarChar).Value = objBanco2.TipoCuenta1;
+                cmd.Parameters.Add("@RUC", System.Data.SqlDbType.VarChar).Value = objBanco2.RUC1;
+                cmd.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = objBanco2.Direccion1;
+
+                int registrado = cmd.ExecuteNonQuery();
+
+                if (registrado > 0)
+                {
+                    insertado = true;
+                }
+                else
+                {
+                    insertado = false;
+                }
+                return insertado;
+            }
+            return insertado;
         }
     }
 }
