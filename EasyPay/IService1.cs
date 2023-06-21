@@ -28,6 +28,8 @@ namespace EasyPay
 
         [OperationContract]
         bool login(string dni, string pass);
+        [OperationContract]
+        bool eliminarTarjetaEasyPay(string nrotarjeta, string dniusuario, string contra);
 
         // TODO: agregue aquí sus operaciones de servicio
     }

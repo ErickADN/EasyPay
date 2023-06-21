@@ -44,5 +44,10 @@ namespace EasyPayCliente
             
 
         }
+
+        protected System.Void btnRegister_Click(System.Object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
