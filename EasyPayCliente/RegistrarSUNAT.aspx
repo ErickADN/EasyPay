@@ -97,9 +97,6 @@
             font-size: x-large;
             color: #00FFFF;
         }
-        .auto-style52 {
-            text-align: right;
-        }
         .auto-style53 {
             width: 107px;
             height: 42px;
@@ -129,7 +126,7 @@
         <br />
         <br />
         <br />
-        <center><h1 class="auto-style41">REGISTRAR SUNAT</h1></center>
+        <center><h1 class="auto-style41" style="color: #FFFFFF; background-color: #3366CC;">REGISTRAR SUNAT</h1></center>
         <table style="width:100%;">
             <tr>
                 <td class="auto-style56">
@@ -195,13 +192,13 @@
                 <td class="auto-style1"></td>
             </tr>
             <tr>
-                <td class="auto-style46">&nbsp;</td>
+                <td class="auto-style46"></td>
                 <td class="auto-style43">
                     <strong>
                     <asp:Button ID="btnRegistrar" runat="server" Height="26px" Text="REGISTRAR" Width="190px" BackColor="#00FFCC" BorderStyle="None" CssClass="auto-style11" ForeColor=" #3366CC" OnClick="btnRegistrar_Click" />
                     </strong>
                 </td>
-                <td class="auto-style38">&nbsp;</td>
+                <td class="auto-style38"></td>
                 <td class="auto-style1"></td>
             </tr>
             <tr>
