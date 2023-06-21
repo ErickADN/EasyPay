@@ -23,5 +23,10 @@ namespace EasyPayCliente
         {
             Response.Redirect("EasyPay_Principal.aspx");
         }
+
+        protected void btnenviar_Click()
+        {
+
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace EasyPayCliente
 
         }
 
+        //Interfaces para crear cuenta
         protected void btnregistrarpers_Click(object sender, EventArgs e)
         {
             Response.Redirect("Reg_User_Reniec.aspx");

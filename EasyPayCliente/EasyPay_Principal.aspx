@@ -61,7 +61,7 @@
             <tr>
                 <td class="auto-style8" style="font-size: x-large; color: #0000CC;">Saldo de EasyPay</td>
                 <td class="auto-style9">
-                    <asp:Button ID="btnenviar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Enviar" Width="150px" />
+                    <asp:Button ID="btnenviar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Enviar" Width="150px" OnClick="btnenviar_Click" />
                 </td>
                 <td class="auto-style10">
                     <asp:Button ID="btnsolicitar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Solicitar" Width="150px" />
