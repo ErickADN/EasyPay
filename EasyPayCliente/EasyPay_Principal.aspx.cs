@@ -24,9 +24,16 @@ namespace EasyPayCliente
             Response.Redirect("EasyPay_Principal.aspx");
         }
 
-        protected void btnenviar_Click()
-        {
+       
 
+        protected void btntarjeta_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Insert_Tarjeta.aspx");
+        }
+
+        protected void btncuenta_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Insert_CuentaBanc");
         }
     }
 }

@@ -99,7 +99,7 @@ namespace EasyPay
             if (dr.Read())
             {
                 conexion();
-                string sql2 = "insert into Usuario values(@Dni,@Nombre,@Apellido,@Contraseña,@Celular,@Direccion)";
+                string sql2 = "insert into Usuario values(@Dni,@Nombre,@Apellido,@Contraseña,@Celular,@Direccion,0)";
                 cmd = new SqlCommand(sql2, cn);
                 reniec objReniec2 = new reniec();
                 objReniec2.Dni = dni;
@@ -134,7 +134,7 @@ namespace EasyPay
         public bool guardarEmpresaSunat(string ruc, string nombrelegal, string direccioncorreoelectronico, string direccion, string contraseña)
         {
             conexionSunat();
-            string sql = "select * from EMPRESA where ruc=@ruc and Nombrelegal=@Nombrelegal and direccioncorreoelectronico=@direccioncorreoelectronico and Direccion =@Direccion";
+            string sql = "select * from EMPRESA where ruc=@ruc and Nombrelegal=@Nombrelegal and direccioncorreoelectronico=@direccioncorreoelectronico and Direccion =@Direccion, 0";
             cmd = new SqlCommand(sql, cn);
             sunat objSunat = new sunat();
             objSunat.Ruc = ruc;
@@ -209,8 +209,25 @@ namespace EasyPay
             }
             else
             {
-                ingresa = false;
-               
+                DataTable tablita2 = new DataTable();
+                string sentencia2 = "select * from EMPRESA where RUC=@Dni and contraseña=@Contraseña";
+                cmd = new SqlCommand(sentencia, cn);
+                sunat objUsuario2 = new sunat();
+                objUsuario2.Ruc = dni;
+                objUsuario2.Contraseña = pass;
+                cmd.Parameters.Add("@Dni", System.Data.SqlDbType.VarChar).Value = objUsuario2.Ruc;
+                cmd.Parameters.Add("@Contraseña", System.Data.SqlDbType.VarChar).Value = objUsuario2.Contraseña;
+                ada = new SqlDataAdapter(cmd);
+                ada.Fill(tablita2);
+                if (tablita2.Rows.Count > 0)
+                {
+                    ingresa = true;
+
+                }
+                else {
+                    ingresa = false;
+                }
+
             }
             return ingresa;
         }
@@ -262,7 +279,7 @@ namespace EasyPay
         public bool eliminarTarjetaEasyPay(string nrotarjeta, string dniusuario, string contra)
         {
             conexion();
-            string consulta1 = "SELECT * FROM Usuario where  dniUsuario=@dniUsuario and  Contraseña=@Contraseña";
+            string consulta1 = "SELECT * FROM Usuario where  Dni=@dniUsuario and  Contraseña=@Contraseña";
             cmd = new SqlCommand(consulta1, cn);
             Usuario objUsuario = new Usuario();
             objUsuario.Contraseña = contra;
@@ -293,14 +310,14 @@ namespace EasyPay
             return consultado;
         }
 
-        public bool insertarCuentaBancaria(string NumeroCuenta, string TipoCuenta, string RUC, string Direccion, int CodigoSwift, string Propietario)
+        public bool insertarCuentaBancaria(string NumeroCuenta, string TipoCuenta, string RUC, string Direccion, int CodigoSwift)
         {
             conexionBanco();
             string sql = "select * from CUENTABANCARIA where NumeroCuenta=@NumeroCuenta and Propietario=@Propietario";
             cmd = new SqlCommand(sql, cn);
             cuentaBancaria objBanco = new cuentaBancaria();
             objBanco.NroCuenta = NumeroCuenta;
-            objBanco.Propietario = Propietario;
+            objBanco.Propietario = RUC;
 
             cmd.Parameters.Add("@NumeroCuenta", System.Data.SqlDbType.VarChar).Value = objBanco.NroCuenta;
             cmd.Parameters.Add("@Propietario", System.Data.SqlDbType.VarChar).Value = objBanco.Propietario;
@@ -319,8 +336,8 @@ namespace EasyPay
                 objBanco2.RUC1 = RUC;
                 objBanco2.Direccion1 = Direccion;
 
-                cmd.Parameters.Add("@numeroDeCuenta", System.Data.SqlDbType.Int).Value = objBanco2.NroCuenta;
-                cmd.Parameters.Add("@codigoSwift", System.Data.SqlDbType.Int).Value = objBanco2.CodigoSwift;
+                cmd.Parameters.Add("@numeroDeCuenta", System.Data.SqlDbType.VarChar).Value = objBanco2.NroCuenta;
+                cmd.Parameters.Add("@codigoSwift", System.Data.SqlDbType.VarChar).Value = objBanco2.CodigoSwift;
                 cmd.Parameters.Add("@TipoCuenta", System.Data.SqlDbType.VarChar).Value = objBanco2.TipoCuenta1;
                 cmd.Parameters.Add("@RUC", System.Data.SqlDbType.VarChar).Value = objBanco2.RUC1;
                 cmd.Parameters.Add("@Direccion", System.Data.SqlDbType.VarChar).Value = objBanco2.Direccion1;
@@ -339,7 +356,64 @@ namespace EasyPay
             }
             return insertado;
         }
+
+        public bool guardartarjeta(string nrotarjeta, string tipotarjeta, string fechavencimiento, string codigoseguridad, string direcciontarjeta, string dniusuario)
+        {
+            conexionBanco();
+            string sql = "select * from Tarjeta where nrotarjeta=@nrotarjeta and dniusuario=@dniusuario";
+            cmd = new SqlCommand(sql, cn);
+            tarjeta objTarjeta = new tarjeta();
+            objTarjeta.Nrotarjeta = nrotarjeta;
+            objTarjeta.Dniusuario = dniusuario;
+
+
+
+            cmd.Parameters.Add("@nrotarjeta", System.Data.SqlDbType.VarChar).Value = objTarjeta.Nrotarjeta;
+            cmd.Parameters.Add("@Dniusuario", System.Data.SqlDbType.VarChar).Value = objTarjeta.Dniusuario;
+
+
+
+            dr = cmd.ExecuteReader();
+            bool insertado = false;
+            if (dr.Read())
+            {
+                conexion();
+                string sql2 = "insert into Tarjeta values(@nrotarjeta,@tipotarjeta,@fechavencimiento,@codigoseguridad,@direcciontarjeta,@dniusuario)";
+                cmd = new SqlCommand(sql2, cn);
+                tarjeta objTarjeta2 = new tarjeta();
+                objTarjeta2.Nrotarjeta = nrotarjeta;
+                objTarjeta2.Tipotarjeta = tipotarjeta;
+                objTarjeta2.Fechavencimiento = fechavencimiento;
+                objTarjeta2.Codigoseguridad = codigoseguridad;
+                objTarjeta2.Direcciontarjeta = direcciontarjeta;
+                objTarjeta2.Dniusuario = dniusuario;
+
+
+                cmd.Parameters.Add("@Nrotarjeta", System.Data.SqlDbType.VarChar).Value = objTarjeta2.Nrotarjeta;
+                cmd.Parameters.Add("@Tipotarjeta", System.Data.SqlDbType.VarChar).Value = objTarjeta2.Tipotarjeta;
+                cmd.Parameters.Add("@Fechavencimiento", System.Data.SqlDbType.VarChar).Value = objTarjeta2.Fechavencimiento;
+                cmd.Parameters.Add("@Codigoseguridad", System.Data.SqlDbType.VarChar).Value = objTarjeta2.Codigoseguridad;
+                cmd.Parameters.Add("@Direcciontarjeta", System.Data.SqlDbType.VarChar).Value = objTarjeta2.Direcciontarjeta;
+                cmd.Parameters.Add("@Dniusuario", System.Data.SqlDbType.VarChar).Value = objTarjeta2.Dniusuario;
+
+
+                int registrado = cmd.ExecuteNonQuery();
+
+                if (registrado > 0)
+                {
+                    insertado = true;
+                }
+                else
+                {
+                    insertado = false;
+                }
+                return insertado;
+            }
+            return insertado;
+        }
     }
 }
+    
+
     
 

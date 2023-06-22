@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:55401/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -37,6 +37,30 @@
   <wsdl:message name="IService1_login_OutputMessage">
     <wsdl:part name="parameters" element="tns:loginResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_eliminarCuentaBancaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:eliminarCuentaBancaria" />
+  </wsdl:message>
+  <wsdl:message name="IService1_eliminarCuentaBancaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:eliminarCuentaBancariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_eliminarTarjetaEasyPay_InputMessage">
+    <wsdl:part name="parameters" element="tns:eliminarTarjetaEasyPay" />
+  </wsdl:message>
+  <wsdl:message name="IService1_eliminarTarjetaEasyPay_OutputMessage">
+    <wsdl:part name="parameters" element="tns:eliminarTarjetaEasyPayResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_insertarCuentaBancaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertarCuentaBancaria" />
+  </wsdl:message>
+  <wsdl:message name="IService1_insertarCuentaBancaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertarCuentaBancariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_guardartarjeta_InputMessage">
+    <wsdl:part name="parameters" element="tns:guardartarjeta" />
+  </wsdl:message>
+  <wsdl:message name="IService1_guardartarjeta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:guardartarjetaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -57,6 +81,22 @@
     <wsdl:operation name="login">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/login" message="tns:IService1_login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/loginResponse" message="tns:IService1_login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarCuentaBancaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/eliminarCuentaBancaria" message="tns:IService1_eliminarCuentaBancaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/eliminarCuentaBancariaResponse" message="tns:IService1_eliminarCuentaBancaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarTarjetaEasyPay">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/eliminarTarjetaEasyPay" message="tns:IService1_eliminarTarjetaEasyPay_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/eliminarTarjetaEasyPayResponse" message="tns:IService1_eliminarTarjetaEasyPay_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarCuentaBancaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/insertarCuentaBancaria" message="tns:IService1_insertarCuentaBancaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/insertarCuentaBancariaResponse" message="tns:IService1_insertarCuentaBancaria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="guardartarjeta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/guardartarjeta" message="tns:IService1_guardartarjeta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/guardartarjetaResponse" message="tns:IService1_guardartarjeta_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -99,6 +139,42 @@
     </wsdl:operation>
     <wsdl:operation name="login">
       <soap:operation soapAction="http://tempuri.org/IService1/login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarCuentaBancaria">
+      <soap:operation soapAction="http://tempuri.org/IService1/eliminarCuentaBancaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarTarjetaEasyPay">
+      <soap:operation soapAction="http://tempuri.org/IService1/eliminarTarjetaEasyPay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarCuentaBancaria">
+      <soap:operation soapAction="http://tempuri.org/IService1/insertarCuentaBancaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guardartarjeta">
+      <soap:operation soapAction="http://tempuri.org/IService1/guardartarjeta" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

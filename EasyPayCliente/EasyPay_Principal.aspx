@@ -43,10 +43,10 @@
 <body>
     <form id="form1" runat="server">
         <div class="auto-style1" style="background-color: #3366CC">
-            <asp:ImageButton ID="btnlogo" runat="server" Height="40px" ImageUrl="~/Properties/App_LocalResources/Images/easypay_logo.png" OnClick="btnlogo_Click" Width="40px" />
+            <asp:ImageButton ID="btnlogo" runat="server" Height="40px" ImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWEnUyGOBPtr28gq13D89AxB-w0MS4IoRfInee5qwsm5eMub8yzHSepBszmb5lkNeMoWs&usqp=CAU" OnClick="btnlogo_Click" Width="40px" />
             <asp:Button ID="btntransferir" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Transferir fondos" Width="110px" />
-            <asp:Button ID="btntarjeta" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Insertar tarjeta" Width="110px" />
-            <asp:Button ID="btncuenta" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Insertar cuenta bancaria" Width="160px" />
+            <asp:Button ID="btntarjeta" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Insertar tarjeta" Width="110px" OnClick="btntarjeta_Click" />
+            <asp:Button ID="btncuenta" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Insertar cuenta bancaria" Width="160px" OnClick="btncuenta_Click" />
             <asp:Button ID="btnmovimiento" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Movimientos" Width="100px" />
             <asp:Button ID="btnchatbot" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Chatbot" Width="100px" />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,7 +61,7 @@
             <tr>
                 <td class="auto-style8" style="font-size: x-large; color: #0000CC;">Saldo de EasyPay</td>
                 <td class="auto-style9">
-                    <asp:Button ID="btnenviar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Enviar" Width="150px" OnClick="btnenviar_Click" />
+                    <asp:Button ID="btnenviar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Enviar" Width="150px" />
                 </td>
                 <td class="auto-style10">
                     <asp:Button ID="btnsolicitar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Solicitar" Width="150px" />

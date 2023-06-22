@@ -45,9 +45,9 @@
         <table class="auto-style2">
             <tr>
                 <td class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Image ID="Image1" runat="server" Height="190px" Width="294px" ImageUrl="~/Properties/App_LocalResources/Images/cuenta_personal.jpg" />
+                    <asp:Image ID="Image1" runat="server" Height="190px" Width="294px" ImageUrl="https://mundooffshore.net/wp-content/uploads/2019/10/C%C3%B3mo-abrir-una-cuenta-personal-a-distancia-en-un-banco-extranjero-300x225.jpg" />
                 </td>
-                <td class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Image ID="Image2" runat="server" Height="190px" Width="294px" ImageUrl="~/Properties/App_LocalResources/Images/cuenta_empresarial.jpg" />
+                <td class="auto-style5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Image ID="Image2" runat="server" Height="190px" Width="294px" ImageUrl="https://concepto.de/wp-content/uploads/2014/08/empresa-2-e1551381652195.jpg" />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </td>
             </tr>

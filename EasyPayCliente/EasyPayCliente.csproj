@@ -76,6 +76,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Eliminar_CuentaBancaria.aspx" />
+    <Content Include="EliminarTarjeta.aspx" />
+    <Content Include="Insert_Tarjeta.aspx" />
+    <Content Include="Insert_CuentaBanc.aspx" />
     <Content Include="Crear_Cuenta.aspx" />
     <Content Include="EasyPay_Principal.aspx" />
     <Content Include="Login.aspx" />
@@ -91,6 +95,34 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Eliminar_CuentaBancaria.aspx.cs">
+      <DependentUpon>Eliminar_CuentaBancaria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Eliminar_CuentaBancaria.aspx.designer.cs">
+      <DependentUpon>Eliminar_CuentaBancaria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarTarjeta.aspx.cs">
+      <DependentUpon>EliminarTarjeta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarTarjeta.aspx.designer.cs">
+      <DependentUpon>EliminarTarjeta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Insert_Tarjeta.aspx.cs">
+      <DependentUpon>Insert_Tarjeta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Insert_Tarjeta.aspx.designer.cs">
+      <DependentUpon>Insert_Tarjeta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Insert_CuentaBanc.aspx.cs">
+      <DependentUpon>Insert_CuentaBanc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Insert_CuentaBanc.aspx.designer.cs">
+      <DependentUpon>Insert_CuentaBanc.aspx</DependentUpon>
     </Compile>
     <Compile Include="Crear_Cuenta.aspx.cs">
       <DependentUpon>Crear_Cuenta.aspx</DependentUpon>
@@ -154,7 +186,6 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\ServicioEasyPay\" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

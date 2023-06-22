@@ -34,7 +34,9 @@ namespace EasyPay
         [OperationContract]
         bool eliminarTarjetaEasyPay(string nrotarjeta, string dniusuario, string contra);
         [OperationContract]
-        bool insertarCuentaBancaria(string NumeroCuenta, string TipoCuenta, string RUC, string Direccion, int CodigoSwift, string Propietario);
+        bool insertarCuentaBancaria(string NumeroCuenta, string TipoCuenta, string RUC, string Direccion, int CodigoSwift);
+        [OperationContract]
+        bool guardartarjeta(string nrotarjeta, string tipotarjeta, string fechavencimiento, string codigoseguridad, string direcciontarjeta, string dniusuario);
 
         // TODO: agregue aquí sus operaciones de servicio
     }
