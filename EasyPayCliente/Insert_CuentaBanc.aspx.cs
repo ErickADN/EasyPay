@@ -16,7 +16,7 @@ namespace EasyPayCliente
         ServicioEasyPay.Service1Client serviceEasyPay = new ServicioEasyPay.Service1Client();
         protected void btnguardar_Click(object sender, EventArgs e)
         {
-            string tipo, ruc, codigoSwift, numeroCuentaBancaria, direccion, FechaVencimiento;
+            string tipo, ruc, codigoSwift, numeroCuentaBancaria, direccion;
             tipo = txttipo.Text;
             ruc = txtruc.Text;
             codigoSwift = txtswift.Text;
