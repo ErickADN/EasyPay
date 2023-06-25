@@ -27,6 +27,7 @@ namespace EasyPayCliente
             if (existe == true)
             {
 
+                general.propietario = usuario;
                 Response.Redirect("EasyPay_Principal.aspx");
             }
             else

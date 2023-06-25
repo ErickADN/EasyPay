@@ -131,6 +131,12 @@ namespace EasyPayCliente.ServicioEasyPay {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/guardartarjeta", ReplyAction="http://tempuri.org/IService1/guardartarjetaResponse")]
         System.Threading.Tasks.Task<bool> guardartarjetaAsync(string nrotarjeta, string tipotarjeta, string fechavencimiento, string codigoseguridad, string direcciontarjeta, string dniusuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/saldo", ReplyAction="http://tempuri.org/IService1/saldoResponse")]
+        string saldo(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/saldo", ReplyAction="http://tempuri.org/IService1/saldoResponse")]
+        System.Threading.Tasks.Task<string> saldoAsync(string usuario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -230,6 +236,14 @@ namespace EasyPayCliente.ServicioEasyPay {
         
         public System.Threading.Tasks.Task<bool> guardartarjetaAsync(string nrotarjeta, string tipotarjeta, string fechavencimiento, string codigoseguridad, string direcciontarjeta, string dniusuario) {
             return base.Channel.guardartarjetaAsync(nrotarjeta, tipotarjeta, fechavencimiento, codigoseguridad, direcciontarjeta, dniusuario);
+        }
+        
+        public string saldo(string usuario) {
+            return base.Channel.saldo(usuario);
+        }
+        
+        public System.Threading.Tasks.Task<string> saldoAsync(string usuario) {
+            return base.Channel.saldoAsync(usuario);
         }
     }
 }

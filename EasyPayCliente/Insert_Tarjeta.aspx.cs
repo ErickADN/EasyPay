@@ -27,7 +27,9 @@ namespace EasyPayCliente
             bool ingresado =serviceEasyPay.guardartarjeta(numeroTarjeta, tipo, FechaVencimiento, codigoSeguridad, direccion, dni);
             if(ingresado==true){
                 string script = "<script>alert('¡TARJETA GUARDADA!');</script>";
+                
                 ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script);
+                Response.Redirect("Login.aspx");
             }
             else {
                 string script = "<script>alert('¡ERROR VERIFIQUE SUS DATOS!');</script>";

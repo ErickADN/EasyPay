@@ -69,9 +69,11 @@
             </tr>
             <tr>
                 <td class="auto-style5">
-                    <asp:Label ID="lblsaldo" runat="server" Font-Size="XX-Large" ForeColor="Blue" Text="$ALDO"></asp:Label>
+                    <asp:Label ID="lblsaldo" runat="server" Font-Size="XX-Large" ForeColor="Blue" Text="SALDO"></asp:Label>
                 </td>
-                <td class="auto-style6"></td>
+                <td class="auto-style6">
+                    <asp:Label ID="lblsaldo0" runat="server" Font-Size="XX-Large" ForeColor="Blue"></asp:Label>
+                </td>
                 <td class="auto-style11"></td>
             </tr>
         </table>

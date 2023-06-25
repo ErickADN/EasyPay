@@ -37,6 +37,8 @@ namespace EasyPay
         bool insertarCuentaBancaria(string NumeroCuenta, string TipoCuenta, string RUC, string Direccion, int CodigoSwift);
         [OperationContract]
         bool guardartarjeta(string nrotarjeta, string tipotarjeta, string fechavencimiento, string codigoseguridad, string direcciontarjeta, string dniusuario);
+        [OperationContract]
+        string saldo(string usuario);
 
         // TODO: agregue aquí sus operaciones de servicio
     }

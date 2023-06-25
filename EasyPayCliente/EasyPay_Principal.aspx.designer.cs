@@ -7,13 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace EasyPayCliente
-{
-
-
-    public partial class EasyPay_Principal
-    {
-
+namespace EasyPayCliente {
+    
+    
+    public partial class EasyPay_Principal {
+        
         /// <summary>
         /// Control form1.
         /// </summary>
@@ -22,7 +20,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// Control btnlogo.
         /// </summary>
@@ -31,7 +29,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnlogo;
-
+        
         /// <summary>
         /// Control btntransferir.
         /// </summary>
@@ -40,7 +38,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btntransferir;
-
+        
         /// <summary>
         /// Control btntarjeta.
         /// </summary>
@@ -49,7 +47,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btntarjeta;
-
+        
         /// <summary>
         /// Control btncuenta.
         /// </summary>
@@ -58,7 +56,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btncuenta;
-
+        
         /// <summary>
         /// Control btnmovimiento.
         /// </summary>
@@ -67,7 +65,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnmovimiento;
-
+        
         /// <summary>
         /// Control btnchatbot.
         /// </summary>
@@ -76,7 +74,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnchatbot;
-
+        
         /// <summary>
         /// Control btncerrar.
         /// </summary>
@@ -85,7 +83,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btncerrar;
-
+        
         /// <summary>
         /// Control btnenviar.
         /// </summary>
@@ -94,7 +92,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnenviar;
-
+        
         /// <summary>
         /// Control btnsolicitar.
         /// </summary>
@@ -103,7 +101,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnsolicitar;
-
+        
         /// <summary>
         /// Control lblsaldo.
         /// </summary>
@@ -112,5 +110,14 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblsaldo;
+        
+        /// <summary>
+        /// Control lblsaldo0.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblsaldo0;
     }
 }

@@ -18,6 +18,7 @@ namespace EasyPay
         SqlCommand cmd;
         SqlDataAdapter ada;
         SqlDataReader dr;
+       
         public void conexion()
         {
             //cn = new SqlConnection("Data Source=MIGUEL-PC;Initial Catalog=BDEasyPay;User ID=sa; Password = 123");
@@ -360,7 +361,7 @@ namespace EasyPay
         public bool guardartarjeta(string nrotarjeta, string tipotarjeta, string fechavencimiento, string codigoseguridad, string direcciontarjeta, string dniusuario)
         {
             conexionBanco();
-            string sql = "select * from Tarjeta where nrotarjeta=@nrotarjeta and dniusuario=@dniusuario";
+            string sql = "select * from Tarjeta where NumeroTarjeta=@nrotarjeta and Propietario=@dniusuario";
             cmd = new SqlCommand(sql, cn);
             tarjeta objTarjeta = new tarjeta();
             objTarjeta.Nrotarjeta = nrotarjeta;
@@ -410,6 +411,44 @@ namespace EasyPay
                 return insertado;
             }
             return insertado;
+        }
+
+        public string saldo(string usuario)
+        {
+            
+            string sql, saldo;
+            conexion();
+            sql = "select saldo from Usuario where Dni=@usuario ";
+            cmd = new SqlCommand(sql, cn);
+            Usuario objUsuario = new Usuario();
+            objUsuario.Dni = usuario;
+       
+            cmd.Parameters.Add("@usuario", System.Data.SqlDbType.VarChar).Value = objUsuario.Dni;
+            dr=cmd.ExecuteReader();
+            if (dr.Read())
+            {
+
+                saldo = dr["saldo"].ToString();
+            }
+            else {
+                sql = "select saldo from EMPRESA where RUC=@usuario ";
+                cmd = new SqlCommand(sql, cn);
+                sunat objSunat = new sunat();
+                objSunat.Ruc = usuario;
+
+                cmd.Parameters.Add("@usuario", System.Data.SqlDbType.VarChar).Value = objSunat.Ruc;
+                cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    saldo = dr["@usuario"].ToString();
+                }
+                else {
+                    saldo = "Error al cargar el sado sus datos no se encuentran";
+                }
+
+            }
+            return saldo;
+
         }
     }
 }
