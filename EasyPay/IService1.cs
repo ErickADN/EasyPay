@@ -39,7 +39,8 @@ namespace EasyPay
         bool guardartarjeta(string nrotarjeta, string tipotarjeta, string fechavencimiento, string codigoseguridad, string direcciontarjeta, string dniusuario);
         [OperationContract]
         string saldo(string usuario);
-
+        [OperationContract]
+        string depositar(string nrotarjeta, string cantidad,string propietario);
         // TODO: agregue aquí sus operaciones de servicio
     }
 

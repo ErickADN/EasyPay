@@ -94,13 +94,13 @@ namespace EasyPayCliente {
         protected global::System.Web.UI.WebControls.Button btnenviar;
         
         /// <summary>
-        /// Control btnsolicitar.
+        /// Control btnDepositar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsolicitar;
+        protected global::System.Web.UI.WebControls.Button btnDepositar;
         
         /// <summary>
         /// Control lblsaldo.

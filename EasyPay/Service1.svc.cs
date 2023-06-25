@@ -437,10 +437,10 @@ namespace EasyPay
                 objSunat.Ruc = usuario;
 
                 cmd.Parameters.Add("@usuario", System.Data.SqlDbType.VarChar).Value = objSunat.Ruc;
-                cmd.ExecuteReader();
+                dr=cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    saldo = dr["@usuario"].ToString();
+                    saldo = dr["saldo"].ToString();
                 }
                 else {
                     saldo = "Error al cargar el sado sus datos no se encuentran";
@@ -448,6 +448,142 @@ namespace EasyPay
 
             }
             return saldo;
+
+        }
+
+        public string depositar(string nrotarjeta, string cantidad, string propietario)
+        {
+            string sql,respuesta,sql2;
+            double saldo;
+
+            conexionBanco();
+            sql = "select * from tarjeta where   NumeroTarjeta = @numeroTarjeta and Propietario = @propietario";
+            cmd = new SqlCommand(sql, cn);
+
+            
+            cmd.Parameters.Add("@numeroTarjeta", System.Data.SqlDbType.VarChar).Value = nrotarjeta;
+            cmd.Parameters.Add("@propietario", System.Data.SqlDbType.VarChar).Value = propietario;
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                saldo = double.Parse(dr["saldo"].ToString());
+                if (saldo >= int.Parse(cantidad))
+                {
+                    conexion();
+                    sql = "update Usuario set saldo =saldo + @cantidad where Dni =@propietario";
+                    cmd = new SqlCommand(sql, cn);
+
+                    cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.VarChar).Value = cantidad;
+                    cmd.Parameters.Add("@propietario", System.Data.SqlDbType.VarChar).Value = propietario;
+                    int realizado = cmd.ExecuteNonQuery();
+                    if (realizado == 1)
+                    {
+                        conexion();
+                        sql = "insert into movimientos values(@monto,@deposito,@nroTarjeta,null)";
+                        cmd = new SqlCommand(sql, cn);
+
+                        cmd.Parameters.Add("@monto", System.Data.SqlDbType.VarChar).Value = cantidad;
+                        cmd.Parameters.Add("@deposito", System.Data.SqlDbType.VarChar).Value = "deposito";
+                        cmd.Parameters.Add("@nroTarjeta", System.Data.SqlDbType.VarChar).Value = nrotarjeta;
+                        int realizado2 = cmd.ExecuteNonQuery();
+                        if (realizado2 == 1)
+                        {
+                            conexionBanco();
+                            sql = "update TARJETA SET saldo = saldo - @cantidad where NumeroTarjeta=@numerotarjeta";
+                            cmd = new SqlCommand(sql, cn);
+
+                            cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.VarChar).Value = cantidad;
+                            cmd.Parameters.Add("@numerotarjeta", System.Data.SqlDbType.VarChar).Value = nrotarjeta;
+                            cmd.ExecuteNonQuery();
+                            respuesta = "Movimiento Registrado con exito";
+                        }
+                        else
+                        {
+                            respuesta = "Movimiento no registrado";
+                        }
+                    }
+                    else
+                    {
+                        respuesta = "No se  logro la transferencia verifique sus datos";
+                    }
+
+                }
+                else {
+                    respuesta = "NO CUENTA CON EL SALDO SUFICIENTE PARA LA TRANSFERENCIA";
+                    
+                    
+                }
+            }
+            else {
+                conexionBanco();
+                sql2 = "select * from CUENTABANCARIA where   NumeroCuenta = @numeroTarjeta and Propietario = @propietario";
+                cmd = new SqlCommand(sql2, cn);
+
+
+                cmd.Parameters.Add("@numeroTarjeta", System.Data.SqlDbType.VarChar).Value = nrotarjeta;
+                cmd.Parameters.Add("@propietario", System.Data.SqlDbType.VarChar).Value = propietario;
+                dr = cmd.ExecuteReader();
+                
+                if (dr.Read())
+                {
+                    saldo = double.Parse(dr["saldo"].ToString());
+                    if (saldo >= int.Parse(cantidad))
+                    {
+                        conexion();                     
+                        sql = "update EMPRESA  set saldo =saldo + @cantidad where RUC =@propietario";
+                        cmd = new SqlCommand(sql, cn);
+
+                        cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.VarChar).Value = cantidad;
+                        cmd.Parameters.Add("@propietario", System.Data.SqlDbType.VarChar).Value = propietario;
+                        int realizado = cmd.ExecuteNonQuery();
+                        if (realizado == 1)
+                        {
+                            conexion();
+                            sql = "insert into movimientos values(@monto,@deposito,null,@NumeroCuenta)";
+                            cmd = new SqlCommand(sql, cn);
+
+                            cmd.Parameters.Add("@monto", System.Data.SqlDbType.VarChar).Value = cantidad;
+                            cmd.Parameters.Add("@deposito", System.Data.SqlDbType.VarChar).Value = "deposito";
+                            cmd.Parameters.Add("@NumeroCuenta", System.Data.SqlDbType.VarChar).Value = nrotarjeta;
+                            int realizado2 = cmd.ExecuteNonQuery();
+                            if (realizado2 == 1)
+                            {
+                                conexionBanco();
+                                sql = "update CUENTABANCARIA SET saldo = saldo - @cantidad where NumeroCuenta=@numerotarjeta";
+                                cmd = new SqlCommand(sql, cn);
+
+                                cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.VarChar).Value = cantidad;
+                                cmd.Parameters.Add("@numerotarjeta", System.Data.SqlDbType.VarChar).Value = nrotarjeta;
+                                cmd.ExecuteNonQuery();
+                                respuesta = "Movimiento Registrado con exito";
+                                
+                            }
+                            else
+                            {
+                                respuesta = "Movimiento no registrado";
+                            }
+                        }
+                        else
+                        {
+                            respuesta = "No se  logro la transferencia verifique sus datos";
+                        }
+
+                    }
+                    else
+                    {
+                        respuesta = "NO CUENTA CON EL SALDO SUFICIENTE PARA LA TRANSFERENCIA";
+
+
+                    }
+                }
+                else
+                {
+                    respuesta = "DATOS ERRONEOS";
+                }
+            }
+            desconexion();
+
+            return respuesta; 
 
         }
     }

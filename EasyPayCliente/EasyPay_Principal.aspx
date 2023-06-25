@@ -64,7 +64,7 @@
                     <asp:Button ID="btnenviar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Enviar" Width="150px" />
                 </td>
                 <td class="auto-style10">
-                    <asp:Button ID="btnsolicitar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Solicitar" Width="150px" />
+                    <asp:Button ID="btnDepositar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Depositar" Width="150px" />
                 </td>
             </tr>
             <tr>
