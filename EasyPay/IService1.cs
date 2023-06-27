@@ -41,6 +41,8 @@ namespace EasyPay
         string saldo(string usuario);
         [OperationContract]
         string depositar(string nrotarjeta, string cantidad,string propietario);
+        [OperationContract]
+        string enviar(string dniEmisor, string dniReceptor, string cantidad);
         // TODO: agregue aquí sus operaciones de servicio
     }
 

@@ -85,10 +85,10 @@
     <Content Include="Insert_CuentaBanc.aspx" />
     <Content Include="Crear_Cuenta.aspx" />
     <Content Include="EasyPay_Principal.aspx" />
-    <Content Include="Login.aspx" />
     <Content Include="Properties\App_LocalResources\Images\cuenta_empresarial.jpg" />
     <Content Include="Properties\App_LocalResources\Images\cuenta_personal.jpg" />
     <Content Include="Properties\App_LocalResources\Images\easypay_logo.png" />
+    <Content Include="Diseño_Login.aspx" />
     <Content Include="RegistrarSUNAT.aspx" />
     <Content Include="Reg_User_Reniec.aspx" />
     <Content Include="Web.config" />
@@ -142,14 +142,14 @@
     <Compile Include="EasyPay_Principal.aspx.designer.cs">
       <DependentUpon>EasyPay_Principal.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Diseño_Login.aspx.cs">
+      <DependentUpon>Diseño_Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="Diseño_Login.aspx.designer.cs">
+      <DependentUpon>Diseño_Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrarSUNAT.aspx.cs">
       <DependentUpon>RegistrarSUNAT.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

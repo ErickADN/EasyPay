@@ -473,13 +473,13 @@ namespace EasyPay
                     sql = "update Usuario set saldo =saldo + @cantidad where Dni =@propietario";
                     cmd = new SqlCommand(sql, cn);
 
-                    cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.VarChar).Value = cantidad;
+                    cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.Decimal).Value = cantidad;
                     cmd.Parameters.Add("@propietario", System.Data.SqlDbType.VarChar).Value = propietario;
                     int realizado = cmd.ExecuteNonQuery();
                     if (realizado == 1)
                     {
                         conexion();
-                        sql = "insert into movimientos values(@monto,@deposito,@nroTarjeta,null)";
+                        sql = "insert into movimientos values(@monto,@deposito,@nroTarjeta,null,null)";
                         cmd = new SqlCommand(sql, cn);
 
                         cmd.Parameters.Add("@monto", System.Data.SqlDbType.VarChar).Value = cantidad;
@@ -492,7 +492,7 @@ namespace EasyPay
                             sql = "update TARJETA SET saldo = saldo - @cantidad where NumeroTarjeta=@numerotarjeta";
                             cmd = new SqlCommand(sql, cn);
 
-                            cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.VarChar).Value = cantidad;
+                            cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.Decimal).Value = cantidad;
                             cmd.Parameters.Add("@numerotarjeta", System.Data.SqlDbType.VarChar).Value = nrotarjeta;
                             cmd.ExecuteNonQuery();
                             respuesta = "Movimiento Registrado con exito";
@@ -533,13 +533,13 @@ namespace EasyPay
                         sql = "update EMPRESA  set saldo =saldo + @cantidad where RUC =@propietario";
                         cmd = new SqlCommand(sql, cn);
 
-                        cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.VarChar).Value = cantidad;
+                        cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.Decimal).Value = cantidad;
                         cmd.Parameters.Add("@propietario", System.Data.SqlDbType.VarChar).Value = propietario;
                         int realizado = cmd.ExecuteNonQuery();
                         if (realizado == 1)
                         {
                             conexion();
-                            sql = "insert into movimientos values(@monto,@deposito,null,@NumeroCuenta)";
+                            sql = "insert into movimientos values(@monto,@deposito,null,@NumeroCuenta,null)";
                             cmd = new SqlCommand(sql, cn);
 
                             cmd.Parameters.Add("@monto", System.Data.SqlDbType.VarChar).Value = cantidad;
@@ -552,7 +552,7 @@ namespace EasyPay
                                 sql = "update CUENTABANCARIA SET saldo = saldo - @cantidad where NumeroCuenta=@numerotarjeta";
                                 cmd = new SqlCommand(sql, cn);
 
-                                cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.VarChar).Value = cantidad;
+                                cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.Decimal).Value = cantidad;
                                 cmd.Parameters.Add("@numerotarjeta", System.Data.SqlDbType.VarChar).Value = nrotarjeta;
                                 cmd.ExecuteNonQuery();
                                 respuesta = "Movimiento Registrado con exito";
@@ -585,6 +585,98 @@ namespace EasyPay
 
             return respuesta; 
 
+        }
+
+        public string enviar(string dniEmisor, string dniReceptor, string cantidad)
+        {
+            string sql, respuesta="";
+            conexion();
+            sql = "select * from Usuario where Dni = @dniReceptor";
+            cmd = new SqlCommand(sql, cn);
+
+            cmd.Parameters.Add("@dniReceptor", System.Data.SqlDbType.VarChar).Value = dniReceptor;
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                conexion();
+                sql = "update Usuario  set saldo =saldo + @cantidad where Dni =@dniReceptor";
+                cmd = new SqlCommand(sql, cn);
+
+                cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.Decimal).Value = cantidad;
+                cmd.Parameters.Add("@dniReceptor", System.Data.SqlDbType.VarChar).Value = dniReceptor;
+                int realizado = cmd.ExecuteNonQuery();
+                if (realizado == 1)
+                {
+                    conexion();
+                    sql = "update Usuario  set saldo =saldo - @cantidad where Dni =@dniEmisor";
+                    cmd = new SqlCommand(sql, cn);
+
+                    cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.Decimal).Value = cantidad;
+                    cmd.Parameters.Add("@dniEmisor", System.Data.SqlDbType.VarChar).Value = dniEmisor;
+                    int realizado2 = cmd.ExecuteNonQuery();
+                    if (realizado2 == 1)
+                    {
+                        conexion();
+                        sql = "insert into movimientos values(@monto,@deposito,null,null,@dni)";
+                        cmd = new SqlCommand(sql, cn);
+
+                        cmd.Parameters.Add("@monto", System.Data.SqlDbType.VarChar).Value = cantidad;
+                        cmd.Parameters.Add("@deposito", System.Data.SqlDbType.VarChar).Value = "Envio";
+                        cmd.Parameters.Add("@dni", System.Data.SqlDbType.VarChar).Value = dniReceptor;
+                        cmd.ExecuteNonQuery();
+                        respuesta = "ENVIO HECHO";
+                    }
+                }
+            }
+            else {
+                conexion();
+                sql = "select * from EMPRESA where RUC = @dniReceptor";
+                cmd = new SqlCommand(sql, cn);
+
+                cmd.Parameters.Add("@dniReceptor", System.Data.SqlDbType.VarChar).Value = dniReceptor;
+                dr = cmd.ExecuteReader();
+                if (dr.Read()) {
+                    conexion();
+                    sql = "update EMPRESA  set saldo =saldo + @cantidad where RUC =@dniReceptor";
+                    cmd = new SqlCommand(sql, cn);
+
+                    cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.Decimal).Value = cantidad;
+                    cmd.Parameters.Add("@dniReceptor", System.Data.SqlDbType.VarChar).Value = dniReceptor;
+                    int realizado = cmd.ExecuteNonQuery();
+                    if (realizado == 1)
+                    {
+                        conexion();
+                        sql = "update EMPRESA  set saldo =saldo - @cantidad where RUC =@dniEmisor";
+                        cmd = new SqlCommand(sql, cn);
+
+                        cmd.Parameters.Add("@cantidad", System.Data.SqlDbType.Decimal).Value = cantidad;
+                        cmd.Parameters.Add("@dniEmisor", System.Data.SqlDbType.VarChar).Value = dniEmisor;
+                        int realizado2 = cmd.ExecuteNonQuery();
+                        if (realizado2 == 1)
+                        {
+                            conexion();
+                            sql = "insert into movimientos values(@monto,@deposito,null,null,@dni)";
+                            cmd = new SqlCommand(sql, cn);
+
+                            cmd.Parameters.Add("@monto", System.Data.SqlDbType.VarChar).Value = cantidad;
+                            cmd.Parameters.Add("@deposito", System.Data.SqlDbType.VarChar).Value = "Envio";
+                            cmd.Parameters.Add("@dni", System.Data.SqlDbType.VarChar).Value = dniReceptor;
+                            cmd.ExecuteNonQuery();
+                            respuesta = "ENVIO HECHO";
+                        }
+                        
+                    }
+                    
+                }
+                else
+                {
+
+                    respuesta = "No existe un usuario con este identificador";
+                }
+
+            }
+            return respuesta;
+              
         }
     }
 }

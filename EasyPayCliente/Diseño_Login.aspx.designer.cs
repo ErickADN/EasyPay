@@ -10,7 +10,7 @@
 namespace EasyPayCliente {
     
     
-    public partial class Login {
+    public partial class Diseño_Login {
         
         /// <summary>
         /// Control form1.
@@ -22,13 +22,13 @@ namespace EasyPayCliente {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control txtusuario.
+        /// Control txtnumero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtusuario;
+        protected global::System.Web.UI.WebControls.TextBox txtnumero;
         
         /// <summary>
         /// Control txtpass.
@@ -49,12 +49,12 @@ namespace EasyPayCliente {
         protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
         
         /// <summary>
-        /// Control btningresar.
+        /// Control btnIngresar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btningresar;
+        protected global::System.Web.UI.WebControls.Button btnIngresar;
     }
 }
