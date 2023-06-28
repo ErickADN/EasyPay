@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Eliminar_CuentaBancaria.aspx.cs" Inherits="EasyPayCliente.Eliminar_CuentaBancaria" %>
+﻿<%@ Register Src="Arriba.ascx" TagName="cabecera" TagPrefix="cabe" %>
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Eliminar_CuentaBancaria.aspx.cs" Inherits="EasyPayCliente.Eliminar_CuentaBancaria" %>
 
 <!DOCTYPE html>
 
@@ -40,6 +42,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
+                        <cabe:cabecera runat="server" ID="MiControl" />
+
         <div><H1 style="background-color: #3366CC; color: #FFFFFF" class="auto-style10">ELIMINAR CUENTA BANCARIA</H1>
         </div>
         

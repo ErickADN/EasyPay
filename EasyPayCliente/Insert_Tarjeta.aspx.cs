@@ -29,7 +29,7 @@ namespace EasyPayCliente
                 string script = "<script>alert('¡TARJETA GUARDADA!');</script>";
                 
                 ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script);
-                Response.Redirect("Login.aspx");
+                
             }
             else {
                 string script = "<script>alert('¡ERROR VERIFIQUE SUS DATOS!');</script>";

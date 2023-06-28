@@ -7,13 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace EasyPayCliente
-{
-
-
-    public partial class Insert_CuentaBanc
-    {
-
+namespace EasyPayCliente {
+    
+    
+    public partial class Insert_CuentaBanc {
+        
         /// <summary>
         /// Control form1.
         /// </summary>
@@ -22,7 +20,16 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
+        /// <summary>
+        /// Control MiControl.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::EasyPayCliente.Arriba MiControl;
+        
         /// <summary>
         /// Control txtnumero.
         /// </summary>
@@ -31,7 +38,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtnumero;
-
+        
         /// <summary>
         /// Control txttipo.
         /// </summary>
@@ -40,7 +47,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txttipo;
-
+        
         /// <summary>
         /// Control txtruc.
         /// </summary>
@@ -49,7 +56,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtruc;
-
+        
         /// <summary>
         /// Control txtdireccion.
         /// </summary>
@@ -58,7 +65,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdireccion;
-
+        
         /// <summary>
         /// Control txtswift.
         /// </summary>
@@ -67,7 +74,7 @@ namespace EasyPayCliente
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtswift;
-
+        
         /// <summary>
         /// Control btnguardar.
         /// </summary>

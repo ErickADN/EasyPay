@@ -42,5 +42,10 @@ namespace EasyPayCliente
         {
             Response.Redirect("Insert_CuentaBanc");
         }
+
+        protected void btnenviar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Enviar.aspx");
+        }
     }
 }

@@ -135,7 +135,7 @@ namespace EasyPay
         public bool guardarEmpresaSunat(string ruc, string nombrelegal, string direccioncorreoelectronico, string direccion, string contraseña)
         {
             conexionSunat();
-            string sql = "select * from EMPRESA where ruc=@ruc and Nombrelegal=@Nombrelegal and direccioncorreoelectronico=@direccioncorreoelectronico and Direccion =@Direccion, 0";
+            string sql = "select * from EMPRESA where ruc=@ruc and Nombrelegal=@Nombrelegal and direccioncorreoelectronico=@direccioncorreoelectronico and Direccion =@Direccion";
             cmd = new SqlCommand(sql, cn);
             sunat objSunat = new sunat();
             objSunat.Ruc = ruc;
@@ -155,7 +155,7 @@ namespace EasyPay
             if (dr.Read())
             {
                 conexion();
-                string sql2 = "insert into EMPRESA values(@Ruc,@Nombrelegal,@Direccioncorreoelectronico,@Direccion,@Contraseña)";
+                string sql2 = "insert into EMPRESA values(@Ruc,@Nombrelegal,@Direccioncorreoelectronico,@Direccion,@Contraseña,0)";
                 cmd = new SqlCommand(sql2, cn);
                 sunat objSunat2 = new sunat();
                 objSunat2.Ruc = ruc;
@@ -212,7 +212,7 @@ namespace EasyPay
             {
                 DataTable tablita2 = new DataTable();
                 string sentencia2 = "select * from EMPRESA where RUC=@Dni and contraseña=@Contraseña";
-                cmd = new SqlCommand(sentencia, cn);
+                cmd = new SqlCommand(sentencia2, cn);
                 sunat objUsuario2 = new sunat();
                 objUsuario2.Ruc = dni;
                 objUsuario2.Contraseña = pass;
@@ -429,8 +429,10 @@ namespace EasyPay
             {
 
                 saldo = dr["saldo"].ToString();
+                
             }
             else {
+                dr.Close();
                 sql = "select saldo from EMPRESA where RUC=@usuario ";
                 cmd = new SqlCommand(sql, cn);
                 sunat objSunat = new sunat();

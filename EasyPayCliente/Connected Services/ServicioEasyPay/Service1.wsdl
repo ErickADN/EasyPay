@@ -67,6 +67,18 @@
   <wsdl:message name="IService1_saldo_OutputMessage">
     <wsdl:part name="parameters" element="tns:saldoResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_depositar_InputMessage">
+    <wsdl:part name="parameters" element="tns:depositar" />
+  </wsdl:message>
+  <wsdl:message name="IService1_depositar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:depositarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_enviar_InputMessage">
+    <wsdl:part name="parameters" element="tns:enviar" />
+  </wsdl:message>
+  <wsdl:message name="IService1_enviar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:enviarResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -107,6 +119,14 @@
     <wsdl:operation name="saldo">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/saldo" message="tns:IService1_saldo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/saldoResponse" message="tns:IService1_saldo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="depositar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/depositar" message="tns:IService1_depositar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/depositarResponse" message="tns:IService1_depositar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="enviar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/enviar" message="tns:IService1_enviar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/enviarResponse" message="tns:IService1_enviar_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -194,6 +214,24 @@
     </wsdl:operation>
     <wsdl:operation name="saldo">
       <soap:operation soapAction="http://tempuri.org/IService1/saldo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="depositar">
+      <soap:operation soapAction="http://tempuri.org/IService1/depositar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enviar">
+      <soap:operation soapAction="http://tempuri.org/IService1/enviar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

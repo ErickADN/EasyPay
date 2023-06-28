@@ -8,6 +8,6 @@ namespace EasyPayCliente
     public static class general
     {
         public static string propietario = "";
-        
+        public static string tipo="";
     }
 }

@@ -126,7 +126,7 @@
         <br />
         <br />
         <br />
-        <center><h1 class="auto-style41" style="color: #FFFFFF; background-color: #3366CC;">REGISTRAR SUNAT</h1></center>
+        <center><h1 class="auto-style41" style="color: #FFFFFF; background-color: #3366CC;">REGISTRAR EMPRESA</h1></center>
         <table style="width:100%;">
             <tr>
                 <td class="auto-style56">

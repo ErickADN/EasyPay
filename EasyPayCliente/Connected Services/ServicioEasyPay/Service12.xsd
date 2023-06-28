@@ -165,4 +165,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="depositar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nrotarjeta" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cantidad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="propietario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="depositarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="depositarResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enviar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dniEmisor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dniReceptor" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cantidad" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="enviarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="enviarResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

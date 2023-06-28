@@ -27,9 +27,9 @@ namespace EasyPayCliente
             bool ingresado = serviceEasyPay.insertarCuentaBancaria(numeroCuentaBancaria, tipo, ruc, direccion,int.Parse(codigoSwift));
             if (ingresado == true)
             {
-                string script = "<script>alert('¡TARJETA GUARDADA!');</script>";
+                string script = "<script>alert('¡CUENTA GUARDADA!');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script);
-                Response.Redirect("Login.aspx");
+                
             }
             else
             {

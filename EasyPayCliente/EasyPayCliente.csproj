@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Arriba.ascx" />
     <Content Include="Connected Services\ServicioEasyPay\EasyPayCliente.ServicioEasyPay.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -79,8 +80,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Depositar.aspx" />
     <Content Include="Eliminar_CuentaBancaria.aspx" />
     <Content Include="EliminarTarjeta.aspx" />
+    <Content Include="Enviar.aspx" />
     <Content Include="Insert_Tarjeta.aspx" />
     <Content Include="Insert_CuentaBanc.aspx" />
     <Content Include="Crear_Cuenta.aspx" />
@@ -94,10 +97,21 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arriba.ascx.cs">
+      <DependentUpon>Arriba.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Connected Services\ServicioEasyPay\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Depositar.aspx.cs">
+      <DependentUpon>Depositar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Depositar.aspx.designer.cs">
+      <DependentUpon>Depositar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Eliminar_CuentaBancaria.aspx.cs">
       <DependentUpon>Eliminar_CuentaBancaria.aspx</DependentUpon>
@@ -112,6 +126,13 @@
     </Compile>
     <Compile Include="EliminarTarjeta.aspx.designer.cs">
       <DependentUpon>EliminarTarjeta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Enviar.aspx.cs">
+      <DependentUpon>Enviar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Enviar.aspx.designer.cs">
+      <DependentUpon>Enviar.aspx</DependentUpon>
     </Compile>
     <Compile Include="general.cs" />
     <Compile Include="Insert_Tarjeta.aspx.cs">

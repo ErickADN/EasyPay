@@ -137,6 +137,18 @@ namespace EasyPayCliente.ServicioEasyPay {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/saldo", ReplyAction="http://tempuri.org/IService1/saldoResponse")]
         System.Threading.Tasks.Task<string> saldoAsync(string usuario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/depositar", ReplyAction="http://tempuri.org/IService1/depositarResponse")]
+        string depositar(string nrotarjeta, string cantidad, string propietario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/depositar", ReplyAction="http://tempuri.org/IService1/depositarResponse")]
+        System.Threading.Tasks.Task<string> depositarAsync(string nrotarjeta, string cantidad, string propietario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/enviar", ReplyAction="http://tempuri.org/IService1/enviarResponse")]
+        string enviar(string dniEmisor, string dniReceptor, string cantidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/enviar", ReplyAction="http://tempuri.org/IService1/enviarResponse")]
+        System.Threading.Tasks.Task<string> enviarAsync(string dniEmisor, string dniReceptor, string cantidad);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -244,6 +256,22 @@ namespace EasyPayCliente.ServicioEasyPay {
         
         public System.Threading.Tasks.Task<string> saldoAsync(string usuario) {
             return base.Channel.saldoAsync(usuario);
+        }
+        
+        public string depositar(string nrotarjeta, string cantidad, string propietario) {
+            return base.Channel.depositar(nrotarjeta, cantidad, propietario);
+        }
+        
+        public System.Threading.Tasks.Task<string> depositarAsync(string nrotarjeta, string cantidad, string propietario) {
+            return base.Channel.depositarAsync(nrotarjeta, cantidad, propietario);
+        }
+        
+        public string enviar(string dniEmisor, string dniReceptor, string cantidad) {
+            return base.Channel.enviar(dniEmisor, dniReceptor, cantidad);
+        }
+        
+        public System.Threading.Tasks.Task<string> enviarAsync(string dniEmisor, string dniReceptor, string cantidad) {
+            return base.Channel.enviarAsync(dniEmisor, dniReceptor, cantidad);
         }
     }
 }

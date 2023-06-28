@@ -34,7 +34,7 @@ namespace EasyPayCliente
             {
                 string script = "<script>alert('¡REGISTRO CORRECTO!');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script);
-                Response.Redirect("Login.aspx");
+                Response.Redirect("Diseño_Login.aspx");
             }
             else
             {

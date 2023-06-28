@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EasyPay_Principal.aspx.cs" Inherits="EasyPayCliente.EasyPay_Principal" %>
+﻿<%@ Register Src="Arriba.ascx" TagName="cabecera" TagPrefix="cabe" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EasyPay_Principal.aspx.cs" Inherits="EasyPayCliente.EasyPay_Principal" %>
 
 <!DOCTYPE html>
 
@@ -7,9 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-        .auto-style1 {
-            height: 40px;
-        }
         .auto-style3 {
             width: 297px;
         }
@@ -38,20 +36,11 @@
         .auto-style11 {
             height: 244px;
         }
-    </style>
+    </style>   
 </head>
-<body>
+<body>   
     <form id="form1" runat="server">
-        <div class="auto-style1" style="background-color: #3366CC">
-            <asp:ImageButton ID="btnlogo" runat="server" Height="40px" ImageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWEnUyGOBPtr28gq13D89AxB-w0MS4IoRfInee5qwsm5eMub8yzHSepBszmb5lkNeMoWs&usqp=CAU" OnClick="btnlogo_Click" Width="40px" />
-            <asp:Button ID="btntransferir" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Transferir fondos" Width="110px" />
-            <asp:Button ID="btntarjeta" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Insertar tarjeta" Width="110px" OnClick="btntarjeta_Click" />
-            <asp:Button ID="btncuenta" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Insertar cuenta bancaria" Width="160px" OnClick="btncuenta_Click" />
-            <asp:Button ID="btnmovimiento" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Movimientos" Width="100px" />
-            <asp:Button ID="btnchatbot" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" Text="Chatbot" Width="100px" />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btncerrar" runat="server" BackColor="#3366CC" ForeColor="White" Height="40px" OnClick="btncerrar_Click" Text="Cerrar sesion" Width="100px" />
-        </div>
+        <cabe:cabecera runat="server" ID="MiControl" />
         <table style="width:100%;">
             <tr>
                 <td class="auto-style4">&nbsp;</td>
@@ -61,11 +50,10 @@
             <tr>
                 <td class="auto-style8" style="font-size: x-large; color: #0000CC;">Saldo de EasyPay</td>
                 <td class="auto-style9">
-                    <asp:Button ID="btnenviar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Enviar" Width="150px" />
+                    <asp:Button ID="btnenviar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Enviar" Width="150px" OnClick="btnenviar_Click" />
                 </td>
                 <td class="auto-style10">
-                    <asp:Button ID="btnDepositar" runat="server" BackColor="Yellow" Font-Bold="True" ForeColor="#0000CC" Height="50px" Text="Depositar" Width="150px" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style5">

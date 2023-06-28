@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Insert_CuentaBanc.aspx.cs" Inherits="EasyPayCliente.Insert_CuentaBanc" %>
+﻿<%@ Register Src="Arriba.ascx" TagName="cabecera" TagPrefix="cabe" %>
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Insert_CuentaBanc.aspx.cs" Inherits="EasyPayCliente.Insert_CuentaBanc" %>
 
 <!DOCTYPE html>
 
@@ -15,6 +17,8 @@
 </head>
 <body style="text-align:center; height: 374px;">
     <form id="form1" runat="server">
+                        <cabe:cabecera runat="server" ID="MiControl" />
+
         <div><H1 style="background-color: #3366CC; color: #FFFFFF">INSERTAR CUENTA DE BANCARIA</H1>
         </div>
 

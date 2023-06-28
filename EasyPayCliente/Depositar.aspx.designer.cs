@@ -10,7 +10,7 @@
 namespace EasyPayCliente {
     
     
-    public partial class Eliminar_CuentaBancaria {
+    public partial class Depositar {
         
         /// <summary>
         /// Control form1.
@@ -31,39 +31,30 @@ namespace EasyPayCliente {
         protected global::EasyPayCliente.Arriba MiControl;
         
         /// <summary>
-        /// Control txtNroCuenta.
+        /// Control txtNroTarjeta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNroCuenta;
+        protected global::System.Web.UI.WebControls.TextBox txtNroTarjeta;
         
         /// <summary>
-        /// Control txtRuc.
+        /// Control txtCantidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRuc;
+        protected global::System.Web.UI.WebControls.TextBox txtCantidad;
         
         /// <summary>
-        /// Control txtContra.
+        /// Control btnRegistrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContra;
-        
-        /// <summary>
-        /// Control btnEliminar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminar;
+        protected global::System.Web.UI.WebControls.Button btnRegistrar;
     }
 }

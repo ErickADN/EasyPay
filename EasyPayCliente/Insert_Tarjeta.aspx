@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Insert_Tarjeta.aspx.cs" Inherits="EasyPayCliente.Insert_Tarjeta" %>
+﻿<%@ Register Src="Arriba.ascx" TagName="cabecera" TagPrefix="cabe" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Insert_Tarjeta.aspx.cs" Inherits="EasyPayCliente.Insert_Tarjeta" %>
 
 <!DOCTYPE html>
 
@@ -15,6 +16,8 @@
 </head>
 <body style="text-align:center; ">
     <form id="form1" runat="server">
+                <cabe:cabecera runat="server" ID="MiControl" />
+
         <div><H1 style="background-color: #3366CC; color: #FFFFFF">INSERTAR TARJETA</H1>
         </div>
 
