@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -43,6 +44,10 @@ namespace EasyPay
         string depositar(string nrotarjeta, string cantidad,string propietario);
         [OperationContract]
         string enviar(string dniEmisor, string dniReceptor, string cantidad);
+        [OperationContract]
+        DataSet tarjetas(string propietario);
+        [OperationContract]
+        DataSet cuentaBancaria(string propietario);
         // TODO: agregue aquí sus operaciones de servicio
     }
 

@@ -149,6 +149,18 @@ namespace EasyPayCliente.ServicioEasyPay {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/enviar", ReplyAction="http://tempuri.org/IService1/enviarResponse")]
         System.Threading.Tasks.Task<string> enviarAsync(string dniEmisor, string dniReceptor, string cantidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/tarjetas", ReplyAction="http://tempuri.org/IService1/tarjetasResponse")]
+        System.Data.DataSet tarjetas(string propietario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/tarjetas", ReplyAction="http://tempuri.org/IService1/tarjetasResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> tarjetasAsync(string propietario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/cuentaBancaria", ReplyAction="http://tempuri.org/IService1/cuentaBancariaResponse")]
+        System.Data.DataSet cuentaBancaria(string propietario);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/cuentaBancaria", ReplyAction="http://tempuri.org/IService1/cuentaBancariaResponse")]
+        System.Threading.Tasks.Task<System.Data.DataSet> cuentaBancariaAsync(string propietario);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -272,6 +284,22 @@ namespace EasyPayCliente.ServicioEasyPay {
         
         public System.Threading.Tasks.Task<string> enviarAsync(string dniEmisor, string dniReceptor, string cantidad) {
             return base.Channel.enviarAsync(dniEmisor, dniReceptor, cantidad);
+        }
+        
+        public System.Data.DataSet tarjetas(string propietario) {
+            return base.Channel.tarjetas(propietario);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> tarjetasAsync(string propietario) {
+            return base.Channel.tarjetasAsync(propietario);
+        }
+        
+        public System.Data.DataSet cuentaBancaria(string propietario) {
+            return base.Channel.cuentaBancaria(propietario);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> cuentaBancariaAsync(string propietario) {
+            return base.Channel.cuentaBancariaAsync(propietario);
         }
     }
 }

@@ -31,22 +31,13 @@ namespace EasyPayCliente {
         protected global::EasyPayCliente.Arriba MiControl;
         
         /// <summary>
-        /// Control txtNroCuenta.
+        /// Control dpdTarjetas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNroCuenta;
-        
-        /// <summary>
-        /// Control txtRuc.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRuc;
+        protected global::System.Web.UI.WebControls.DropDownList dpdTarjetas;
         
         /// <summary>
         /// Control txtContra.

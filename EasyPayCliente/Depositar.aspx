@@ -65,7 +65,8 @@
             <tr>
                 <td class="auto-style3"></td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="txtNroTarjeta" placeholder="Ingresa Nro Tarjeta" runat="server" Height="30px" Width="250px"></asp:TextBox>
+                    <asp:DropDownList ID="dpdTarjetas" runat="server" CssClass="auto-style12" Height="30px" Width="94px">
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style4"></td>
             </tr>

@@ -38,6 +38,9 @@
         .auto-style11 {
             width: 401px;
         }
+        .auto-style12 {
+            margin-left: 0px;
+        }
     </style>
 </head>
 <body>
@@ -51,15 +54,15 @@
             <tr>
                 <td class="auto-style5">&nbsp;</td>
                 <td class="auto-style7">
-                    <asp:TextBox placeholder="Ingrese Nro de Cuenta Bancaria" ID="txtNroCuenta" runat="server" Height="39px" Width="305px"></asp:TextBox>
+                    <asp:DropDownList ID="dpdTarjetas" runat="server" CssClass="auto-style12" Height="30px" Width="94px">
+                    </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style6"></td>
                 <td class="auto-style8">
-                    <asp:TextBox placeholder="Ingrese RUC del usuario" ID="txtRuc" runat="server" Height="39px" Width="305px"></asp:TextBox>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style3"></td>
             </tr>
             <tr>

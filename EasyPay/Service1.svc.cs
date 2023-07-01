@@ -680,6 +680,30 @@ namespace EasyPay
             return respuesta;
               
         }
+
+        public DataSet tarjetas(string propietario)
+        {
+            conexion();
+            DataSet tarjetas = new DataSet();
+            string sql = "select * from TARJETA where dniUsuario=@propietario";
+            cmd = new SqlCommand(sql, cn);
+            cmd.Parameters.Add("@propietario", System.Data.SqlDbType.VarChar).Value = propietario;
+            ada = new SqlDataAdapter(cmd);
+            ada.Fill(tarjetas);
+            return tarjetas;
+        }
+
+        public DataSet cuentaBancaria(string propietario)
+        {
+            conexion();
+            DataSet tarjetas = new DataSet();
+            string sql = "select * from cuentaBancaria where RUC=@propietario";
+            cmd = new SqlCommand(sql, cn);
+            cmd.Parameters.Add("@propietario", System.Data.SqlDbType.VarChar).Value = propietario;
+            ada = new SqlDataAdapter(cmd);
+            ada.Fill(tarjetas);
+            return tarjetas; ;
+        }
     }
 }
     

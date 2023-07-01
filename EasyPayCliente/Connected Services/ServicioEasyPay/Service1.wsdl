@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:55401/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:55401/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:55401/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EasyPay" />
+      <xsd:import schemaLocation="http://localhost:55401/Service1.svc?xsd=xsd3" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -79,6 +80,18 @@
   <wsdl:message name="IService1_enviar_OutputMessage">
     <wsdl:part name="parameters" element="tns:enviarResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_tarjetas_InputMessage">
+    <wsdl:part name="parameters" element="tns:tarjetas" />
+  </wsdl:message>
+  <wsdl:message name="IService1_tarjetas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:tarjetasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_cuentaBancaria_InputMessage">
+    <wsdl:part name="parameters" element="tns:cuentaBancaria" />
+  </wsdl:message>
+  <wsdl:message name="IService1_cuentaBancaria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:cuentaBancariaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -127,6 +140,14 @@
     <wsdl:operation name="enviar">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/enviar" message="tns:IService1_enviar_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/enviarResponse" message="tns:IService1_enviar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="tarjetas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/tarjetas" message="tns:IService1_tarjetas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/tarjetasResponse" message="tns:IService1_tarjetas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="cuentaBancaria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/cuentaBancaria" message="tns:IService1_cuentaBancaria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/cuentaBancariaResponse" message="tns:IService1_cuentaBancaria_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -232,6 +253,24 @@
     </wsdl:operation>
     <wsdl:operation name="enviar">
       <soap:operation soapAction="http://tempuri.org/IService1/enviar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="tarjetas">
+      <soap:operation soapAction="http://tempuri.org/IService1/tarjetas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cuentaBancaria">
+      <soap:operation soapAction="http://tempuri.org/IService1/cuentaBancaria" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
